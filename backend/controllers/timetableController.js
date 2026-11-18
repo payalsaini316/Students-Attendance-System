@@ -1,5 +1,5 @@
 
-const Timetable = require("../models/Timetable");
+const Timetable = require("../models/Timetable    ");
 
 // GET: Fetch timetable by class, section and day
 const getTimetable = async (req, res) => {
