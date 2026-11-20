@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 import "./Login.css";
 
 function Login() {
@@ -18,14 +18,11 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        {
-          identifier: identifier.trim(),
-          password,
-          role
-        }
-      );
+      const response = await api.post("/auth/login", {
+        identifier: identifier.trim(),
+        password,
+        role
+      });
 
       const { token, user } = response.data;
 
