@@ -87,3 +87,11 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+.staff-dashboard-page .module-card {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}

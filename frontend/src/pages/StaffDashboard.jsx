@@ -1,4 +1,6 @@
 
+import { useNavigate } from "react-router-dom";
+
 import {
   Users,
   CalendarCheck,
@@ -8,18 +10,22 @@ import {
   UserCircle
 } from "lucide-react";
 
+import "./StaffDashboard.css";
+
 const modules = [
-  { name: "My Profile", icon: UserCircle },
-  { name: "Student Management", icon: Users },
-  { name: "Mark Attendance", icon: CalendarCheck },
-  { name: "Attendance Reports", icon: FileText },
-  { name: "Timetable", icon: Clock },
-  { name: "Notices", icon: Bell }
+  { name: "My Profile", icon: UserCircle, path: "/staff-profile" },
+  { name: "Student Management", icon: Users, path: "/students" },
+  { name: "Mark Attendance", icon: CalendarCheck, path: "/attendance" },
+  { name: "Attendance Reports", icon: FileText, path: "/reports" },
+  { name: "Timetable", icon: Clock, path: "/timetable" },
+  { name: "Notices", icon: Bell, path: "/notices" }
 ];
 
 function StaffDashboard() {
+  const navigate = useNavigate();
+
   return (
-    <>
+    <div className="staff-dashboard-page">
       <div className="school-heading">
         <h2>Staff Dashboard</h2>
         <p>Welcome to Swami Dayanand Public School</p>
@@ -30,14 +36,20 @@ function StaffDashboard() {
           const Icon = item.icon;
 
           return (
-            <div className="module-card" key={item.name}>
+            <button
+              type="button"
+              className="module-card"
+              key={item.name}
+              onClick={() => navigate(item.path)}
+              aria-label={item.name}
+            >
               <Icon size={58} strokeWidth={1.8} />
               <p>{item.name}</p>
-            </div>
+            </button>
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 
